@@ -1,120 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
+import { BrowserRouter, Routes, Route, Link } from 'react-router'
+import Main from './components/Main'
+import SignIn from './components/SignIn'
+import Header from './layouts/Header'
+import ProductList from './components/ProductList'
+import ProductInfo from './components/ProductInfo'
+import AddProduct from './components/AddProduct'
+import { useState } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // 로그인 상태 관리
+  const [isLoggedIn, setIsLoggedIn] = useState(false);  // is조건문이어서 true or false
+
+  // 로그인 한 사용자 ID 관리
+  const [ userName, setUserName ] = useState(''); // 이름 : 빈 문자열
+
+  // 로그인 핸들러
+  const handleLogin = (userName) => {
+    setIsLoggedIn(true);  // true : 로그인 성공 시 상태 업데이트
+    setUserName(userName);  // 로그인 한 사용자 ID 저장
+
+  }
+
+  // 로그아웃 핸들러
+  const handleLogout = () => {
+    setIsLoggedIn(false);   // false : 로그아웃
+  }
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+      <section className="app">
+        <BrowserRouter>
+        {/* 헤더에서 넘기고 받음 */}
+          <Header 
+            isLoggedIn={isLoggedIn}
+            userName={userName}
+            onLogout={handleLogout}
+          />
+
+        {/* 본문 영역 */}
+        <div className='contents'>
+          <Routes>
+            <Route path="/" element={<Main />}/>
+            <Route path="/products" element={<ProductList />}/>
+            {/* :id => URL에서 동적으로 변하는 부분을 나타냄 */}
+            {/* ex) /products/2 */}
+            <Route path="/products/:id" element={<ProductInfo />}/>
+            <Route path="/add-product" element={<AddProduct />}/>
+            <Route path="/sign-in" element={<SignIn onLogin={handleLogin} />}/>            
+          </Routes>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+        </BrowserRouter>
       </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
     </>
   )
 }

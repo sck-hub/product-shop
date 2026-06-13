@@ -5,5 +5,4 @@
 - 필수 라이브러리: react-router-dom
 
 ## 배포
-- 깃허브 리포지터리 Pages 
-"상품 관리"
+- 깃허브 리포지터리 Pages
