@@ -73,16 +73,6 @@
   opacity: 80%;
 }
 
-/* 상품 정보 스타일 */
-.btn-list {
-  margin: 15px;
-  
-}
-
-.btn-list button {
-  padding: 6px 12px;
-}
-
 .btn-add {
   text-align: right;
   margin-right: 20%;
@@ -91,4 +81,91 @@
 
 .btn-add button {
   padding: 6px 12px;
+}
+
+/* 상품 정보 스타일 */
+.product-details {
+  width: 40%;
+  background-color: #eee;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+
+}
+
+.product-details p {
+  margin: 16px;
+}
+
+.btn-list {
+  margin: 20px;
+  text-align: center;
+  
+}
+
+.btn-list button {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+/* 상품 등록 스타일 */
+.add-form {
+  width: 40%;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.add-form label {
+  display: block;
+  margin: 6px;
+}
+
+.add-form input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-form textarea {
+  resize: none;
+  height: 80px;
+}
+
+.add-form button {
+  padding: 8px 16px;
+  background-color: lightgreen;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* 로그인 스타일 */
+.signin-form {
+  width: 30%;
+  margin: 20px auto;
+  text-align: left;
+
+}
+
+.signin-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signin-form button {
+  padding: 8px 16px;
+  background-color: lightgrey;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  width: 100%;
+  margin-left: 3%;
 }

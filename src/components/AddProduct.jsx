@@ -45,6 +45,10 @@ const AddProduct = () => {
 
     }
 
+    const doClick = () => {
+        navigate("/products");  // 상품 목록 페이지로 이동
+    }
+
     return (
         <div className="add-product">
             <h2>상품등록</h2>
@@ -76,15 +80,16 @@ const AddProduct = () => {
                         id="description"
                         name="description"
                         onChange={handleChange}
-                        rows={5}    // 행
-                        cols={30}   // 열
+                        // rows={5}    // 행
+                        // cols={30}   // 열
                         placeholder="상품설명을 입력하세요"
                     />
                 </div>
                 <div>
                     <button type="submit">등록</button>
                 </div>
-            </form>            
+            </form>
+                    <button onClick={doClick}>목록 보기</button>         
         </div>
 
     );

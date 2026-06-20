@@ -62,7 +62,7 @@ const SignIn = ({onLogin}) => {
         <div>
             <h2>로그인</h2>
             {/* form 태그 사용 */}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="signin-form">
                 <p>
                     <input 
                         type="text"
