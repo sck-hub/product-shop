@@ -30,7 +30,8 @@ function App() {
   return (
     <>
       <section className="app">
-        <BrowserRouter>
+        {/* basename : 첫 페이지 설정 */}
+        <BrowserRouter basename='/product-shop/'>
         {/* 헤더에서 넘기고 받음 */}
           <Header 
             isLoggedIn={isLoggedIn}
